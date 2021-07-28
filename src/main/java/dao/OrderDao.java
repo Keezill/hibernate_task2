@@ -7,6 +7,7 @@ import utils.HibernateUtil;
 
 import javax.persistence.Query;
 import java.util.List;
+import java.util.UUID;
 
 public class OrderDao {
     public void saveOrder(Order order) {
@@ -133,6 +134,30 @@ public class OrderDao {
             int result = query.executeUpdate();
             System.out.println("Rows affected: " + result);
             transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+
+    public void batchInsert(int quantity) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+
+            for (int i = 0; i < quantity; i++) {
+                Order order = new Order(UUID.randomUUID());
+                session.save(order);
+
+                if (i % 20 == 0) {
+                    session.flush();
+                    session.clear();
+                }
+            }
+            transaction.commit();
+
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();

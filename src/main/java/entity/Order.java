@@ -25,9 +25,9 @@ public class Order {
     @Column(name = "order_id")
     private UUID orderId;
 
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "customer_id")
-//    private Customer customer;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Album> albums = new ArrayList<>();

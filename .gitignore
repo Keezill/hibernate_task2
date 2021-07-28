@@ -2,6 +2,7 @@
 /shelf/
 /workspace.xml
 .idea/
+target/
 out/
 *.iml
 *.iws

@@ -36,7 +36,10 @@ public class Album {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Track> tracks = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "albums_artists",
+            joinColumns = {@JoinColumn(name = "album_id")},
+            inverseJoinColumns = {@JoinColumn(name = "artist_id")})
     private List<Artist> artists = new ArrayList<>();
 
     public Album(String title, String price, String releaseDate, String plays) {

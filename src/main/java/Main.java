@@ -1,5 +1,6 @@
 import dao.ArtistDao;
 import dao.CustomerDao;
+import dao.OrderDao;
 import entity.*;
 import entity.entity_utils.Gender;
 
@@ -9,6 +10,7 @@ public class Main {
     public static void main(String[] args) {
         ArtistDao artistDao = new ArtistDao();
         CustomerDao customerDao = new CustomerDao();
+        OrderDao orderDao = new OrderDao();
 
         Customer customer = new Customer("Bruce", "Wayne", 30, Gender.MALE);
         Customer customer2 = new Customer("Ben", "Affleck", 48, Gender.MALE);
@@ -42,9 +44,11 @@ public class Main {
         order.getTracks().add(track);
         customer.getOrders().add(order);
 
-        artistDao.saveArtist(artist);
         artistDao.saveArtist(artist1);
+        artistDao.saveArtist(artist);
         customerDao.saveCustomer(customer);
         customerDao.saveCustomer(customer2);
+
+        orderDao.batchInsert(2000000);
     }
 }
