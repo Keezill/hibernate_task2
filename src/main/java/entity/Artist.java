@@ -8,7 +8,9 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "artist")
@@ -35,10 +37,7 @@ public class Artist {
     @Column(name = "plays")
     private String plays;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "artists_albums",
-    joinColumns = {@JoinColumn(name = "artist_id")},
-    inverseJoinColumns = {@JoinColumn(name = "album_id")})
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "artists")
     private List<Album> albums = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)
