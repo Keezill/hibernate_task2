@@ -38,11 +38,11 @@ public class Album {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Track> tracks = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "artists_albums",
-            joinColumns = {@JoinColumn(name = "album_id")},
-            inverseJoinColumns = {@JoinColumn(name = "artist_id")})
+    @ManyToMany(mappedBy = "albums")
     private List<Artist> artists = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "albums")
+    private List<Order> orders = new ArrayList<>();
 
     public Album(String title, String price, String releaseDate, String plays) {
         this.title = title;

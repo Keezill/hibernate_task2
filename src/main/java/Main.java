@@ -20,6 +20,7 @@ public class Main {
         Order order2 = new Order(UUID.randomUUID());
         Artist artist = new Artist("MORGENSHTERN", 20, Gender.MALE, "100000000");
         Album album = new Album("Легендарная пыль", "2000", "12/10/2020", "20000000");
+        Album album2 = new Album("Legendary Dust", "2000", "12/10/2020", "20000000");
         Track track = new Track("Съел деда", "200", "01/02/2020");
 
         Artist artist1 = new Artist("Валя Карнавал", 19, Gender.FEMALE, "8000000");
@@ -31,8 +32,12 @@ public class Main {
         album.getTracks().add(track);
         album.getArtists().add(artist);
         album.getArtists().add(artist3);
+        album2.getArtists().add(artist);
+        album2.getArtists().add(artist3);
         artist.getAlbums().add(album);
+        artist.getAlbums().add(album2);
         artist3.getAlbums().add(album);
+        artist3.getAlbums().add(album2);
         artist.getTracks().add(track);
 
         artist1.getTracks().add(track1);
@@ -48,6 +53,7 @@ public class Main {
 
         artistDao.saveArtist(artist1);
         artistDao.saveArtist(artist);
+        artistDao.saveArtist(artist3);
         customerDao.saveCustomer(customer);
         customerDao.saveCustomer(customer2);
 

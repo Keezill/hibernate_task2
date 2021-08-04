@@ -29,7 +29,10 @@ public class Order {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "orders_albums",
+    joinColumns = {@JoinColumn(name = "order_id")},
+    inverseJoinColumns = {@JoinColumn(name = "album_id")})
     private List<Album> albums = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)

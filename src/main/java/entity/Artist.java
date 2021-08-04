@@ -37,7 +37,10 @@ public class Artist {
     @Column(name = "plays")
     private String plays;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "artists")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "artists_albums",
+    joinColumns = {@JoinColumn(name = "artist_id")},
+    inverseJoinColumns = {@JoinColumn(name = "album_id")})
     private List<Album> albums = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)
