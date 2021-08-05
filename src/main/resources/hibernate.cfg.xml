@@ -8,9 +8,12 @@
 
         <!-- JDBC Database connection settings -->
         <property name="connection.driver_class">org.postgresql.Driver</property>
-        <property name="connection.url">jdbc:postgresql://localhost/adv2</property>
+        <property name="connection.url">jdbc:postgresql://ec2-54-236-137-173.compute-1.amazonaws.com:5432/d8hg33f6032gns?password=1c5177b1935894a15341b640381be303e158aa216bbb9a8352f934fe72af29b4</property>
+        <property name="connection.username">putjsocerlotgn</property>
+        <property name="connection.password">1c5177b1935894a15341b640381be303e158aa216bbb9a8352f934fe72af29b4</property>
+        <!--<property name="connection.url">jdbc:postgresql://localhost/adv2</property>
         <property name="connection.username">keezil</property>
-        <property name="connection.password">keezil</property>
+        <property name="connection.password">keezil</property>-->
 
         <!-- JDBC connection pool settings ... using built-in test pool -->
         <property name="connection.pool_size">1</property>
