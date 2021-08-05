@@ -11,8 +11,6 @@ public class Main {
     public static void main(String[] args) {
         ArtistDao artistDao = new ArtistDao();
         CustomerDao customerDao = new CustomerDao();
-        OrderDao orderDao = new OrderDao();
-        AlbumDao albumDao = new AlbumDao();
 
         Customer customer = new Customer("Bruce", "Wayne", 30, Gender.MALE);
         Customer customer2 = new Customer("Ben", "Affleck", 48, Gender.MALE);
@@ -57,6 +55,9 @@ public class Main {
         customerDao.saveCustomer(customer);
         customerDao.saveCustomer(customer2);
 
+        Service service = new Service();
+        service.run();
         //orderDao.batchInsert(2000000);
+
     }
 }
