@@ -29,7 +29,7 @@ public class CustomerDao {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            String hql = "UPDATE Artist set name = :name, surname = :surname age = :age, gender = :gender "
+            String hql = "UPDATE Customer set name = :name, surname = :surname age = :age, gender = :gender "
                     + "WHERE id = :customerId";
             Query query = session.createQuery(hql);
             query.setParameter("name", customer.getName());

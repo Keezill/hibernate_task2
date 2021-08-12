@@ -15,7 +15,7 @@ public class OrderDao {
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            Object object = session.save(order);
+            session.save(order);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {

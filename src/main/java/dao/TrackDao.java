@@ -14,7 +14,7 @@ public class TrackDao {
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            Object object = session.save(track);
+            session.save(track);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -29,7 +29,7 @@ public class TrackDao {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            String hql = "UPDATE Album set title = :title, price = :price, releaseDate = :releaseDate, "
+            String hql = "UPDATE Track set title = :title, price = :price, releaseDate = :releaseDate, "
                     + "WHERE id = :trackId";
             Query query = session.createQuery(hql);
             query.setParameter("title", track.getTitle());

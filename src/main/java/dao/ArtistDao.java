@@ -24,7 +24,7 @@ public class ArtistDao {
         }
     }
 
-    public void updateAlbumById(Artist artist, int artistId) {
+    public void updateArtistById(Artist artist, int artistId) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();

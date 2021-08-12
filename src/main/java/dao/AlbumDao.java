@@ -14,7 +14,7 @@ public class AlbumDao {
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            Object object = session.save(album);
+            session.save(album);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
